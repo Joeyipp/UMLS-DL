@@ -168,7 +168,7 @@ def create_embedding(vocab_size, max_length, EMBEDDING_DIM, t_atoms, word2vecFil
 
         print("Done!")
 
-        print("\n-> Generating Non-Trainable Embedding Matrix from {}".format(word2vecFile))
+        print("\n-> Preloading Weights to Embedding Matrix from {}".format(word2vecFile))
         # Create the embedding_matrix using the embeddings_index
         embedding_matrix = zeros((vocab_size, EMBEDDING_DIM))
 
@@ -179,7 +179,7 @@ def create_embedding(vocab_size, max_length, EMBEDDING_DIM, t_atoms, word2vecFil
 
         print("Done!")
 
-        # Return a non-trainable Keras Embedding Layer loaded with weights from the word2vecFile
+        # Return a Keras Embedding Layer loaded with weights from the word2vecFile
         return Embedding(vocab_size, EMBEDDING_DIM, weights=[embedding_matrix], input_length=max_length, trainable=True)
 
     # Return a trainable Keras Embedding Layer
