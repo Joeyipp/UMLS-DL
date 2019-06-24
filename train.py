@@ -283,11 +283,11 @@ def run_model(model, inputFile, valFile, t_atoms, max_length, trunc_type, batch_
     # Reason for no validation_split because data is reading in line-by-line on the fly,
     # so can't effectively split because NOT ALL DATA are read into memory!
     malstm_trained = model.fit_generator(generator=generate_arrays_from_file(inputFile, t_atoms, max_length, trunc_type), 
-                                         steps_per_epoch=math.ceil(16091400/batch_size), # math.ceil(dataset size: 41561928/ batch size)
+                                         steps_per_epoch=math.ceil(28419239/batch_size), # math.ceil(dataset size: 41561928/ batch size)
                                          #use_multiprocessing=True,
                                          #workers=10,
-                                         #validation_data=generate_arrays_from_file(valFile, t_atoms, max_length, trunc_type),
-                                         #validation_steps=math.ceil(4617992/batch_size),
+                                         validation_data=generate_arrays_from_file(valFile, t_atoms, max_length, trunc_type),
+                                         validation_steps=math.ceil(3157693/batch_size),
                                          shuffle=True,
                                          epochs=50,
                                          verbose=1,
