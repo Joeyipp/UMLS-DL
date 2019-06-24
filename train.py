@@ -26,8 +26,8 @@ from tensorflow.keras.preprocessing.text import Tokenizer, one_hot, text_to_word
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.models import Model, Sequential
-from tensorflow.compat.v1.keras.layers import CuDNNLSTM
-from tensorflow.keras.layers import Input, Dense, Dropout, Activation, BatchNormalization, Flatten, Embedding, Conv1D, MaxPooling1D, GlobalMaxPooling1D, Reshape, Bidirectional
+#from tensorflow.compat.v1.keras.layers import CuDNNLSTM
+from tensorflow.keras.layers import Input, Dense, Dropout, Activation, BatchNormalization, Flatten, Embedding, Conv1D, MaxPooling1D, GlobalMaxPooling1D, Reshape, Bidirectional, CuDNNLSTM
 from tensorflow.keras.optimizers import Adam
 
 # python3 -c 'import keras; print(keras.__version__)' (Check Keras Version)
@@ -208,7 +208,7 @@ def create_model(embedding, max_length, EMBEDDING_DIM, LSTM_NUM_HIDDEN=0, NUM_CL
     # model.add(Bidirectional(CuDNNLSTM(256, return_sequences=False)))
     #model.add(Attention(max_length))
 
-    x.add(Bidirectional(tf.compat.v1.keras.layers.CuDNNLSTM(LSTM_NUM_HIDDEN)))
+    x.add(Bidirectional(CuDNNLSTM(LSTM_NUM_HIDDEN)))
     x.add(Dropout(0.2))
     shared_model = x
 
