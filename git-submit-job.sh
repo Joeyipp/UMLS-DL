@@ -1,6 +1,6 @@
 #!/bin/bash
 module load python/3.6
-python3 -u train.py MRCONSO_Train_Length_30.txt MRCONSO_Validate_Length_30.txt List_of_Unique_Atoms_Length_30.txt bio_embedding_intrinsic.txt
+python3 -u train.py MRCONSO_Train_Length_30.txt MRCONSO_Validate_Length_30.txt List_of_Unique_Atoms_Length_30.txt bio_embedding_intrinsic.txt >> output.log
 
 #python -u l-jaccard.py MRCONSO_Parsed_Length_30.txt >> output.log
 
