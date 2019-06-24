@@ -29,6 +29,7 @@ from tensorflow.keras.models import Model, Sequential
 #from tensorflow.compat.v1.keras.layers import CuDNNLSTM
 from tensorflow.keras.layers import Input, Dense, Dropout, Activation, BatchNormalization, Flatten, Embedding, Conv1D, MaxPooling1D, GlobalMaxPooling1D, Reshape, Bidirectional, CuDNNLSTM
 from tensorflow.keras.optimizers import Adam
+tf.enable_eager_execution()
 
 # python3 -c 'import keras; print(keras.__version__)' (Check Keras Version)
 
@@ -36,8 +37,8 @@ from tensorflow.keras.optimizers import Adam
 
 class myCallback(tf.keras.callbacks.Callback):
     def on_epoch_end(self, epoch, logs={}):
-        if(logs.get('acc')>0.95):
-            print("\nReached 95% accuracy so cancelling training!")
+        if(logs.get('acc')>0.98):
+            print("\nReached 98% accuracy so cancelling training!")
             self.model.stop_training = True
 
 def save_checkpoints(epochs):
@@ -289,9 +290,9 @@ def run_model(model, inputFile, valFile, t_atoms, max_length, trunc_type, batch_
                                          validation_data=generate_arrays_from_file(valFile, t_atoms, max_length, trunc_type),
                                          validation_steps=math.ceil(3157693/batch_size),
                                          shuffle=True,
-                                         epochs=50,
+                                         epochs=20,
                                          verbose=1,
-                                         callbacks=[cp_callback])#callbacks, cp_callback])
+                                         callbacks=[callbacks, cp_callback])
 
     training_end_time = time()
     print("Total training time: {:.2f}".format(training_end_time - training_start_time))
