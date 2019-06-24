@@ -29,7 +29,7 @@ from tensorflow.keras.models import Model, Sequential
 #from tensorflow.compat.v1.keras.layers import CuDNNLSTM
 from tensorflow.keras.layers import Input, Dense, Dropout, Activation, BatchNormalization, Flatten, Embedding, Conv1D, MaxPooling1D, GlobalMaxPooling1D, Reshape, Bidirectional, CuDNNLSTM
 from tensorflow.keras.optimizers import Adam
-tf.enable_eager_execution()
+#tf.enable_eager_execution()
 
 # python3 -c 'import keras; print(keras.__version__)' (Check Keras Version)
 
